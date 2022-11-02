@@ -9,6 +9,11 @@ def extraer_archivos(dir_path):
                 result.append(dir_path + "/" + path)
     return result
 
+
+#esta funcion busca extraer la lista de palabras a buscar como una lista. Ya como a cada uno
+#le haga falta sacarlos. en nuestro caso era a partir de un dataframe sacado de un csv.
+
+
 def extraer_vistas(views_path):
     df = pd.read_csv(views_path+'views_limpio.csv', delimiter=';')
     df2 = pd.read_csv(views_path+'mviews_limpio.csv', delimiter=';')
@@ -19,6 +24,8 @@ def extraer_vistas(views_path):
 def extraer_vistas_archivo(archivo):
     with open(archivo, "r") as file:
         return file.readlines()
+
+#estas son solo para facilitar la lectura y quitarnos de close y tonterías.
 
 def escribir(archivo, texto):
     with open(archivo, 'w+') as f:
