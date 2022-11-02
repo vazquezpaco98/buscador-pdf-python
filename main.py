@@ -9,11 +9,25 @@ def extraer_archivos(dir_path):
                 result.append(dir_path + "/" + path)
     return result
 
-def extraer_vistas(views_path):
-    df = pd.read_csv(views_path+'views_limpio.csv', delimiter=';')
-    df2 = pd.read_csv(views_path+'mviews_limpio.csv', delimiter=';')
 
-    views = list(df['VIEW_NAME'].values) + list(df2["VIEW_NAME"].values)
+def extraer_vistas(views_path, columna):
+    views = []
+    for path in os.listdir(views_path):
+        if os.path.isfile(os.path.join(views_path, path)):
+            if(path.split(".")[-1] == 'csv'):
+                df = pd.read_csv(os.path.join(views_path, path), delimiter=';')
+                views += list(df['VIEW_NAME'].values)
+    return views
+
+
+
+def extraer_vistas(views_path, columna):
+    views = []
+    for path in os.listdir(views_path):
+        if os.path.isfile(os.path.join(views_path, path)):
+            if(path.split(".")[-1] == 'csv'):
+                df = pd.read_csv(os.path.join(views_path, path), delimiter=';')
+                views += list(df['VIEW_NAME'].values)
     return views
 
 def extraer_vistas_archivo(archivo):
@@ -39,17 +53,18 @@ directorio_vistas = directorio+'vistas/'
 directorio_logs = directorio+'logs/'
 
 
+columna='VIEW_NAME'
 rutas = extraer_archivos(directorio_pdf)
-views = extraer_vistas(directorio_vistas)
+views = extraer_vistas(directorio_vistas, 'VIEW_NAME')
 
 
 # extra para una prueba
-views = extraer_vistas_archivo(directorio_vistas+'hoja_nueva.txt')
+views = extraer_vistas_archivo(directorio_vistas+'hoja_nueva2.txt')
 ####
 
 views = list(map(lambda x: x.rstrip(), views))
 
-views.remove('')
+
 
 
 log_path = directorio_logs+"log.txt"
