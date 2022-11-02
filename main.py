@@ -32,7 +32,9 @@ def añadir(archivo, texto):
 
 # main
 
-directorio = 'c:/Users/frvazque/Documents/Proyecto/programa/'
+
+#recomendamos poner en directorio la ruta absoluta de la carpeta contenedora del main
+directorio = '.'
 
 directorio_pdf=directorio+'nuevos/'
 directorio_vistas = directorio+'vistas/'
