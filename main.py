@@ -20,16 +20,6 @@ def extraer_vistas(views_path, columna):
     return views
 
 
-
-def extraer_vistas(views_path, columna):
-    views = []
-    for path in os.listdir(views_path):
-        if os.path.isfile(os.path.join(views_path, path)):
-            if(path.split(".")[-1] == 'csv'):
-                df = pd.read_csv(os.path.join(views_path, path), delimiter=';')
-                views += list(df['VIEW_NAME'].values)
-    return views
-
 def extraer_vistas_archivo(archivo):
     with open(archivo, "r") as file:
         return file.readlines()
@@ -50,9 +40,9 @@ def añadir(archivo, texto):
 
 
 #recomendamos poner en directorio la ruta absoluta de la carpeta contenedora del main
-directorio = '.'
+directorio = './'
 
-directorio_pdf=directorio+'nuevos/'
+directorio_pdf=directorio+'pdfs/'
 directorio_vistas = directorio+'vistas/'
 directorio_logs = directorio+'logs/'
 
@@ -63,7 +53,7 @@ views = extraer_vistas(directorio_vistas, 'VIEW_NAME')
 
 
 # extra para una prueba
-views = extraer_vistas_archivo(directorio_vistas+'hoja_nueva2.txt')
+views = extraer_vistas_archivo(directorio_vistas+'ejemplo.txt')
 ####
 
 views = list(map(lambda x: x.rstrip(), views))
@@ -83,7 +73,7 @@ for pdf in rutas:
         i = 0
         encontrado = False
         while i < pdfReader.getNumPages() and encontrado == False:
-            mensaje_exito = "Encontrada vista " + view + " en pagina " + str(i) + " de archivo " + pdf.split("/")[-1] + "\n"
+            mensaje_exito = "Encontrada palabra " + view + " en pagina " + str(i) + " de archivo " + pdf.split("/")[-1] + "\n"
             mensaje_fracaso = "\n"+"NO "+str(j)+" : "+view+" en "+pdf.split("/")[-1]+"\n"
             Text = pdfReader.getPage(i).extractText()
             ResSearch = re.search(view, Text)          
