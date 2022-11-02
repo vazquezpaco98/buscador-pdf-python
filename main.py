@@ -34,6 +34,8 @@ def extraer_vistas_archivo(archivo):
     with open(archivo, "r") as file:
         return file.readlines()
 
+#estas son solo para facilitar la lectura y quitarnos de close y tonterías.
+
 def escribir(archivo, texto):
     with open(archivo, 'w+') as f:
         f.write(texto)
@@ -46,7 +48,9 @@ def añadir(archivo, texto):
 
 # main
 
-directorio = 'c:/Users/frvazque/Documents/Proyecto/programa/'
+
+#recomendamos poner en directorio la ruta absoluta de la carpeta contenedora del main
+directorio = '.'
 
 directorio_pdf=directorio+'nuevos/'
 directorio_vistas = directorio+'vistas/'
