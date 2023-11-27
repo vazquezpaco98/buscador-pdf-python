@@ -72,10 +72,10 @@ for pdf in rutas:
     for j, view in enumerate(views):
         i = 0
         encontrado = False
-        while i < pdfReader.getNumPages() and encontrado == False:
+        while i < len(pdfReader.pages) and encontrado == False:
             mensaje_exito = "Encontrada palabra " + view + " en pagina " + str(i) + " de archivo " + pdf.split("/")[-1] + "\n"
             mensaje_fracaso = "\n"+"NO "+str(j)+" : "+view+" en "+pdf.split("/")[-1]+"\n"
-            Text = pdfReader.getPage(i).extractText()
+            Text = pdfReader.pages[i].extract_text
             ResSearch = re.search(view, Text)          
             if ResSearch != None:
                 añadir(resultados, mensaje_exito)
