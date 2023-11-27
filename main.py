@@ -76,7 +76,9 @@ for pdf in rutas:
             mensaje_exito = "Encontrada palabra " + view + " en pagina " + str(i) + " de archivo " + pdf.split("/")[-1] + "\n"
             mensaje_fracaso = "\n"+"NO "+str(j)+" : "+view+" en "+pdf.split("/")[-1]+"\n"
             Text = pdfReader.pages[i].extract_text
-            ResSearch = re.search(view, Text)          
+            print(str(Text))
+            print(Text)
+            ResSearch = re.search(view, str(Text))          
             if ResSearch != None:
                 añadir(resultados, mensaje_exito)
                 añadir(log_path, mensaje_exito) 
