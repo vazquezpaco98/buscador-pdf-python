@@ -67,7 +67,7 @@ ya_acabado = directorio_logs+"acabados.txt"
 
 for pdf in rutas:
     pdfObject=open(pdf, 'rb')
-    pdfReader=PyPDF2.PdfFileReader(pdfObject)
+    pdfReader=PyPDF2.PdfReader(pdfObject)
     pdfReader.strict = False
     for j, view in enumerate(views):
         i = 0
